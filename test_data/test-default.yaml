@@ -1,0 +1,5 @@
+name: test-default-name
+arg: 100
+inner:
+  name: test-default-inner-name
+  arg: 200

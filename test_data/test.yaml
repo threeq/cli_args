@@ -1,0 +1,5 @@
+name: test-name
+arg: 1
+inner:
+  name: test-inner-name
+  arg: 11

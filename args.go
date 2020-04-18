@@ -49,7 +49,9 @@ type AppArgs struct {
 func (a *AppArgs) Run(arguments []string) error {
 	flags := Bean2Args(a.CfgData)
 	set := a.flagSet(a.Name, flags)
-	set.String(a.CfgFileCmdArg, a.CfgFilePath, a.CfgFileUsage)
+	if a.CfgFileCmdArg != "" {
+		set.String(a.CfgFileCmdArg, a.CfgFilePath, a.CfgFileUsage)
+	}
 
 	if err := set.Parse(arguments[1:]); err != nil {
 		if err == flag.ErrHelp {
@@ -77,6 +79,9 @@ func (a *AppArgs) Run(arguments []string) error {
 
 // parseFileArg 解析配置文件参数
 func (a *AppArgs) parseFileArg(set *flag.FlagSet) error {
+	if a.CfgFileCmdArg == "" {
+		return nil
+	}
 	cfgFlag := set.Lookup(a.CfgFileCmdArg)
 	if cfgFlag.Value.String() != "" {
 		a.CfgFilePath = cfgFlag.Value.String()

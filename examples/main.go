@@ -17,7 +17,9 @@ type ExampleConfig struct {
 	Exclude         []string        `json:"exclude"`
 }
 
-var conf = new(ExampleConfig)
+var conf = &ExampleConfig{
+	CompilerOptions: CompilerOptions{Target: "xxx.txt"},
+}
 
 func main() {
 	app := args.New("args examples", args.Version("0.0.1"),

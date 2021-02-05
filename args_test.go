@@ -15,11 +15,11 @@ type TestArg1 struct {
 }
 
 type TestInnerArg struct {
-	Name string `yaml:"name" json:"name" toml:"name"`
-	Arg  int    `yaml:"arg" json:"arg" toml:"arg"`
-	Age  uint8    `yaml:"age" json:"age" toml:"age"`
-	Array []string `yaml:"array" json:"array" toml:"array"`
-	Map map[string]string `yaml:"map" json:"map" toml:"map"`
+	Name  string            `yaml:"name" json:"name" toml:"name"`
+	Arg   int               `yaml:"arg" json:"arg" toml:"arg"`
+	Age   uint8             `yaml:"age" json:"age" toml:"age"`
+	Array []string          `yaml:"array" json:"array" toml:"array"`
+	Map   map[string]string `yaml:"map" json:"map" toml:"map"`
 }
 
 func Test_Bean2Args(t *testing.T) {
@@ -56,7 +56,7 @@ func Test_Bean2ArgsNotSupport(t *testing.T) {
 		want map[string]*StructArg
 	}{
 		{"test", &TestArg1{InnerArg: &TestInnerArg{}}, map[string]*StructArg{
-			"inner.array":  nil,
+			"inner.array": nil,
 		}},
 	}
 	for _, tt := range tests {

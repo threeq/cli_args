@@ -430,6 +430,7 @@ func bean2XPath(args map[string]*StructArg, t reflect.Type, v reflect.Value, pat
 			TName:   t.Name(),
 			Name:    path,
 			Usage:   usage,
+			Default: fmt.Sprintf("%v", v),
 			Require: require,
 			Set: func(value interface{}) {
 				v.Set(reflect.ValueOf(value))
